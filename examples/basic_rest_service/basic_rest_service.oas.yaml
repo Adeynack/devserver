@@ -1,0 +1,41 @@
+openapi: 3.0.2
+info:
+  title: Basic REST Service
+  version: 1.0.0
+servers:
+  - description: Local server on port 3000
+    url: http://localhost:3000
+paths:
+  '/shutdown':
+    post:
+      summary: Shutdown the server
+      responses:
+        202:
+          description: Shutdown request accepted.
+          content:
+            text/plain:
+              schema:
+                type: string
+  '/persons':
+    get:
+      summary: Get list of persons
+      responses:
+        200:
+          description: List of persons.
+          content:
+            application/json:
+              schema:
+                type: array
+  '/persons/{personID}':
+    parameters:
+      - name: personID
+        in: path
+    get:
+      summary: Get one person
+      responses:
+        200:
+          description: Person details.
+          content:
+            application/json:
+              schema:
+                type: object
